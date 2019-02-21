@@ -1,0 +1,22 @@
+spring:
+  rabbitmq:
+    username: guest
+    password: guest
+    host: localhost
+    port: 5672
+  cloud:
+    stream:
+      bindings:
+        myInput:
+          destination: minestream
+          group: stream
+        myOutput:
+          destination: minestream
+      rabbit:
+        bindings:
+          myInput:
+            consumer:
+              bindingRoutingKey: minestream.*       # 用来绑定消费者的 routing key
+          myOutput:
+            producer:
+              routing-key-expression: '''minestream.*''' # 需要用这个来指定 RoutingKey
