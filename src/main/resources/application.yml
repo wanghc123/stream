@@ -12,6 +12,11 @@ spring:
           group: stream
         myOutput:
           destination: minestream
+        cusInput:
+          destination: custstream
+          group: stream
+        cusOutput:
+          destination: custstream
       rabbit:
         bindings:
           myInput:
