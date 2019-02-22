@@ -14,10 +14,14 @@ import org.springframework.stereotype.Component;
  * @date: 2019/2/21
  */
 @Component
-@EnableBinding(StreamClient.class)
+@EnableBinding({StreamClient.class,CusClient.class})
 public class StreamReceiver {
     @StreamListener(StreamClient.INPUT)
     public void revice(String message){
         System.out.println("StreamReceiver:"+ message);
+    }
+    @StreamListener(CusClient.INPUT)
+    public void reviceCust(String message){
+        System.out.println("CusReceiver:"+ message);
     }
 }
